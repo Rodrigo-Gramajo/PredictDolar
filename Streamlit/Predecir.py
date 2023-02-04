@@ -7,7 +7,6 @@ import plotly.express as px
 
 st.set_page_config(page_title="Predictor PBI")
 
-
 with st.sidebar.title("Predictor"):
     with st.sidebar.title("Predictor"):
             st.markdown('Realiza predicciones de PBI per Capita usando 6 variables que tienen mas del 80% de correacion :sunglasses:')
