@@ -3,6 +3,9 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
+import plotly.graph_objs as go
+import plotly.offline as pyo
+
 
 
 st.set_page_config(page_title="Dolar Blue")
@@ -40,17 +43,13 @@ def Dolar_Blue():
     response = requests.get(url)
     data = response.json()
 
-    data
-
-
     # In[2]:
 
 
     # Convertimos JSON a unDataFrame
     df = pd.DataFrame(data)
 
-    df
-
+   
 
     # In[3]:
 
@@ -59,7 +58,7 @@ def Dolar_Blue():
 
     df.rename(columns={0:'Fecha', 1:'Compra', 2:'Venta'}, inplace=True)
     df.set_index('Fecha', inplace=True)
-    df
+    
 
 
     # In[4]:
@@ -68,7 +67,7 @@ def Dolar_Blue():
     #Cambiamos nombres de las columnas y ordenamos
 
     df.rename(columns={0:'Fecha', 1:'Compra', 2:'Venta'}, inplace=True)
-    df
+    
 
 
     # In[5]:
@@ -85,8 +84,7 @@ def Dolar_Blue():
 
 
     df.drop(0, inplace=True)
-    df
-
+   
 
     # In[7]:
 
@@ -95,7 +93,7 @@ def Dolar_Blue():
     df['Compra'] = df['Compra'].str.replace(',', '.').astype(float)
     df['Venta'] = df['Venta'].str.replace(',', '.').astype(float)
     df.set_index('Fecha', inplace=True)
-    df
+  
 
 
     # In[8]:
@@ -111,7 +109,7 @@ def Dolar_Blue():
     # In[9]:
 
 
-    df.to_excel(r"PredictDolar\data\xlsx\PreciosBlue.xlsx")
+    df.to_excel(r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PrecioBlueDIario.xlsx")
 
     #BlueDiarioApi.ipynb
 
@@ -159,7 +157,6 @@ def Dolar_Blue():
     value = df[df['nombre'] == 'Blue']['venta'].values[0]
     value = format(float(value.replace(',', '')), '.1f')
     df = pd.DataFrame({'Fecha': [today], 'Compra': [0.0], 'Venta': [float(value.replace('.', ''))]})
-    df
 
 
     # In[6]:
@@ -167,13 +164,12 @@ def Dolar_Blue():
 
     df['Venta'] = df['Venta'].astype(int) / 10000
     df['Venta'] = df['Venta'].apply(lambda x: "{:.1f}".format(x))
-    df
 
 
     # In[7]:
 
 
-    df.to_excel(r'PredictDolar/data/xlsx/PrecioBlueDIario.xlsx', index=False)
+    df.to_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PrecioBlueDIario.xlsx', index=False)
 
 
     # In[8]:
@@ -182,22 +178,21 @@ def Dolar_Blue():
     import pandas as pd
 
     # Load the existing Excel file into a dataframe
-    df2 = pd.read_excel(r'PredictDolar\data\xlsx\PreciosBlue.xlsx')
+    df2 = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PreciosBlue.xlsx')
 
     # Append the first row of the dataframe to the existing dataframe
     df2 = df2.append(df.iloc[0, :], ignore_index=True)
 
     # Save the updated dataframe to the Excel file
-    df2.to_excel(r'PredictDolar\data\xlsx\PreciosBlue.xlsx', index=False)
+    df2.to_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PreciosBlue.xlsx', index=False)
 
-    df2
 
     #visualizationsBlue.ipynb
 
 
     import pandas as pd
 
-    df = pd.read_excel(r'PredictDolar\data\xlsx\PreciosBlue.xlsx')
+    df = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PreciosBlue.xlsx')
     print(df)
 
 
@@ -205,47 +200,23 @@ def Dolar_Blue():
 
 
     df = pd.DataFrame(df)
-    df
-
-
-    # In[3]:
-
-
-    df.head()
-
-
-    # In[4]:
-
-
-    df.index # it is an attribute, not function
-
-
+ 
     # In[5]:
 
 
     df.drop(df.columns[0], axis=1, inplace=True)
     df.rename(columns={0: 'Fecha', 1: 'Compra', 2: 'Venta'}, inplace=True)
-    df
-
-
-    # In[6]:
-
-
-    df.describe()
-
-
-    # In[7]:
+  
 
 
     df['Compra'] = pd.to_numeric(df['Compra'])
     df['Venta'] = pd.to_numeric(df['Venta'])
-    df
 
 
     # In[8]:
 
 
-    df.to_pickle(r'PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
+    df.to_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
 
 
     # In[9]:
@@ -340,8 +311,7 @@ def Dolar_Blue():
     import matplotlib.pyplot as plt
     import time 
 
-    df = pd.read_pickle(r'PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
-    df
+    df = pd.read_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
 
 
     # In[2]:
@@ -365,7 +335,6 @@ def Dolar_Blue():
 
     df = df[df['ds'] >= '2018-01-01']
 
-    df
 
 
     # In[5]:
@@ -378,18 +347,6 @@ def Dolar_Blue():
 
 
     df = df.sort_values(by='ds')
-
-
-    # In[7]:
-
-
-    df
-
-
-    # In[8]:
-
-
-    df['y'].round(2).describe()
 
 
     # In[9]:
@@ -412,7 +369,7 @@ def Dolar_Blue():
 
 
     pred = prophet_model.predict(future_dataset)
-    pred[['ds','yhat', 'yhat_lower', 'yhat_upper']].head() # only useful columns
+
 
 
     # In[12]:
@@ -484,23 +441,18 @@ def Dolar_Blue():
 
     pred = pred[['ds', 'yhat']]
 
-    pred
-
 
     # In[18]:
 
 
     validation_set = validation_set[['ds', 'y']]
 
-    validation_set
 
 
     # In[19]:
 
 
     pred = pred[pred['ds'].isin(validation_set['ds'])]
-
-    pred
 
 
     # In[20]:
@@ -547,8 +499,6 @@ def Dolar_Blue():
 
     df = df[df['ds'] >= '2021-01-01']
 
-    df
-
 
     # In[25]:
 
@@ -576,8 +526,6 @@ def Dolar_Blue():
     df_cv = cross_validation(model, initial='360 days', period='180 days', horizon = '365 days')
     df_p = performance_metrics(df_cv, rolling_window=0.1) 
     
-    df_p.head()
-
 
     # In[28]:
 
@@ -585,13 +533,13 @@ def Dolar_Blue():
     from sklearn.metrics import mean_squared_error
     pred = pred[['ds', 'yhat']]
 
-    pred
+
     validation_set = validation_set[['ds', 'y']]
 
-    validation_set
+   
     pred = pred[pred['ds'].isin(validation_set['ds'])]
 
-    pred
+  
     merged2 = pd.merge(pred, validation_set, on='ds', how='inner')
 
     validation_ds_y = merged2[['ds', 'y']]
@@ -658,8 +606,6 @@ def Dolar_Blue():
 
     values_new = values_new.rename(columns={'yhat':'Values'})
 
-    values_new
-
 
     # In[34]:
 
@@ -677,18 +623,15 @@ def Dolar_Blue():
     # set the index of the dataframe to the date range
     values_new.index = date_range
 
-    values_new
-
-
     # In[35]:
 
 
-    values_new.to_excel(r"PredictDolar\data\xlsx\values_newBlue.xlsx")
+    values_new.to_excel(r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newBlue.xlsx")
 
-def plot_graph():
-    df = pd.read_excel('values_newBlue.xlsx')
+    df = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newBlue.xlsx')
+    df = df.rename(columns={'Unnamed: 0': 'Fecha'})
     x = df['Fecha']
-    y = df['Valores']
+    y = df['Values']
 
     data = []
     for i in range(1, len(y)):
@@ -706,3 +649,4 @@ def plot_graph():
 
 if st.button("Predict"):
     Dolar_Blue()
+
