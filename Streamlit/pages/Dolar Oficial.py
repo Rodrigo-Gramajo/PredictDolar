@@ -18,14 +18,14 @@ with st.sidebar.title("Prediccion Dolar Oficial"):
 header = st.container()
 dataset = st.container()
 features = st.container()
-Dolar_Blue = st.container()
+Dolar_OF = st.container()
 
 with header:
     st.title("Prediccion Dolar Oficial")
 
 #DolarApiOF.ipynb
 
-def Dolar_Blue():
+def Dolar_OF():
 
     import requests
     import pandas as pd
@@ -402,6 +402,6 @@ def Dolar_Blue():
 
     st.write(fig)
 
-if st.button("Predict"):
-    Dolar_Blue()
+if st.button("Predecir"):
+    Dolar_OF()
 
