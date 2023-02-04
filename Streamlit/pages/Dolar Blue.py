@@ -8,10 +8,10 @@ import plotly.offline as pyo
 
 
 
-st.set_page_config(page_title="Dolar Blue")
+st.set_page_config(page_title="Prediccion Dolar Blue")
 
-with st.sidebar.title("Dolar Blue"):
-    with st.sidebar.title("Dolar Blue"):
+with st.sidebar.title("Prediccion Dolar Blue"):
+    with st.sidebar.title("Prediccion Dolar Blue"):
             st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
 
 
@@ -21,7 +21,7 @@ features = st.container()
 Dolar_Blue = st.container()
 
 with header:
-    st.title("Dolar Blue")
+    st.title("Prediccion Dolar Blue")
 
 #DolarApiBlue.ipynb
 
@@ -43,16 +43,8 @@ def Dolar_Blue():
     response = requests.get(url)
     data = response.json()
 
-    # In[2]:
-
-
     # Convertimos JSON a unDataFrame
     df = pd.DataFrame(data)
-
-   
-
-    # In[3]:
-
 
     #Cambiamos nombres de las columnas
 
@@ -60,18 +52,9 @@ def Dolar_Blue():
     df.set_index('Fecha', inplace=True)
     
 
-
-    # In[4]:
-
-
     #Cambiamos nombres de las columnas y ordenamos
 
     df.rename(columns={0:'Fecha', 1:'Compra', 2:'Venta'}, inplace=True)
-    
-
-
-    # In[5]:
-
 
     # renaming for fbprophet
     df.rename(columns={'Fecha':'ds'}, inplace=True)
@@ -80,14 +63,8 @@ def Dolar_Blue():
     df.head()
 
 
-    # In[6]:
-
-
     df.drop(0, inplace=True)
    
-
-    # In[7]:
-
 
     df['Fecha'] = pd.to_datetime(df['Fecha'], format='%d-%m-%Y')
     df['Compra'] = df['Compra'].str.replace(',', '.').astype(float)
@@ -95,19 +72,11 @@ def Dolar_Blue():
     df.set_index('Fecha', inplace=True)
   
 
-
-    # In[8]:
-
-
     # renaming for fbprophet
     df.rename(columns={'Fecha':'ds'}, inplace=True)
     df.rename(columns={'Venta':'Venta'}, inplace=True)
     df.reset_index(inplace=True)
     df.head()
-
-
-    # In[9]:
-
 
     df.to_excel(r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PrecioBlueDIario.xlsx")
 
@@ -122,10 +91,6 @@ def Dolar_Blue():
 
     print(data)
 
-
-    # In[2]:
-
-
     import pandas as pd
 
     df = pd.DataFrame(data)
@@ -133,22 +98,10 @@ def Dolar_Blue():
 
     print(df)
 
-
-    # In[3]:
-
-
     df = df[["nombre","venta"]]
     print(df)
 
-
-    # In[4]:
-
-
     pd.DataFrame(df)
-
-
-    # In[5]:
-
 
     import datetime
     import pandas as pd
@@ -158,22 +111,11 @@ def Dolar_Blue():
     value = format(float(value.replace(',', '')), '.1f')
     df = pd.DataFrame({'Fecha': [today], 'Compra': [0.0], 'Venta': [float(value.replace('.', ''))]})
 
-
-    # In[6]:
-
-
     df['Venta'] = df['Venta'].astype(int) / 10000
     df['Venta'] = df['Venta'].apply(lambda x: "{:.1f}".format(x))
 
 
-    # In[7]:
-
-
     df.to_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PrecioBlueDIario.xlsx', index=False)
-
-
-    # In[8]:
-
 
     import pandas as pd
 
@@ -196,14 +138,9 @@ def Dolar_Blue():
     print(df)
 
 
-    # In[2]:
-
-
     df = pd.DataFrame(df)
  
-    # In[5]:
-
-
+ 
     df.drop(df.columns[0], axis=1, inplace=True)
     df.rename(columns={0: 'Fecha', 1: 'Compra', 2: 'Venta'}, inplace=True)
   
@@ -213,97 +150,7 @@ def Dolar_Blue():
     df['Venta'] = pd.to_numeric(df['Venta'])
 
 
-    # In[8]:
-
-
     df.to_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
-
-
-    # In[9]:
-
-
-    df.set_index('Fecha', inplace=True)
-    df.index = pd.to_datetime(df.index, format='%d-%m-%Y')
-
-
-    # In[10]:
-
-
-    df.resample(rule='M').mean().plot(); # Historico
-
-
-    # In[11]:
-
-
-    df.resample(rule='AS').mean().plot(); # AS Primer año
-
-
-    # In[12]:
-
-
-    ax = df.resample(rule='AS').mean().plot.bar(figsize=(12,6))
-    ax.set(title='Promedio valor Dolar')
-
-
-    # In[13]:
-
-
-    df['DOLLAR_12M'] = df['Venta'].rolling(window=365).mean()
-    df['DOLLAR_5Y'] = df['Venta'].rolling(window=365*5+1).mean()
-    df[['Venta','DOLLAR_12M','DOLLAR_5Y']].plot(figsize=(18,6))
-
-
-    # In[14]:
-
-
-    ax = df.resample(rule='AS').mean().plot.bar(figsize=(12,6))
-
-
-    # In[15]:
-
-
-    ax = df['Venta'].resample(rule='M').mean().plot(figsize=(15,8), label='Resample MS') # monthly resampled mean
-    ax.autoscale(tight=True)
-    df.rolling(window=30).mean()['Venta'].plot(label='Rolling window=30') # monthly rolling windows/moving average
-    ax.set(title='Precio promedio del Dolar')
-    ax.legend()
-
-
-    # In[16]:
-
-
-    from datetime import datetime
-
-    ax = df['Venta'].resample(rule='M').mean().plot(xlim=['2018-01-01', datetime.now()], figsize=(15,8), label='Resample MS')
-    ax.autoscale(tight=True)
-    df.rolling(window=30).mean()['Venta'].plot(xlim=['2018-01-01',datetime.now()],label='Rolling window=30')
-    ax.set(title='Precio promedio del Dolar')
-    ax.legend()
-
-
-    # In[17]:
-
-
-    df.resample(rule='1y').mean().plot() #1y = 1 years
-
-
-    # In[18]:
-
-
-    df.resample(rule='5y').mean().plot() #5y = 5 years
-
-
-    # In[19]:
-
-
-    df.resample(rule='10y').mean().plot()
-
-
-    # In[20]:
-
-
-    df.resample(rule='15y').mean().plot()
-
 
     #trainingBlue.ipynb
 
@@ -313,10 +160,6 @@ def Dolar_Blue():
 
     df = pd.read_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\PreciosBlue.xlsx.pkl')
 
-
-    # In[2]:
-
-
     # renaming for fbprophet
     df.rename(columns={'Fecha':'ds'}, inplace=True)
     df.rename(columns={'Venta':'y'}, inplace=True)
@@ -324,20 +167,11 @@ def Dolar_Blue():
     df.head()
 
 
-    # In[3]:
-
-
     df.rename(columns={'Fecha':'ds'}, inplace=True)
-
-
-    # In[4]:
 
 
     df = df[df['ds'] >= '2018-01-01']
 
-
-
-    # In[5]:
 
 
     df.drop(['Compra'], axis=1)
@@ -349,36 +183,20 @@ def Dolar_Blue():
     df = df.sort_values(by='ds')
 
 
-    # In[9]:
-
-
     from prophet import Prophet
 
     prophet_model = Prophet()
     prophet_model.fit(df)
 
 
-    # In[10]:
-
-
     future_dataset= prophet_model.make_future_dataframe(periods=1, freq='y') # Data para el proximo año
     future_dataset.tail()
-
-
-    # In[11]:
 
 
     pred = prophet_model.predict(future_dataset)
 
 
-
-    # In[12]:
-
-
     prophet_model.plot(pred)
-
-
-    # In[13]:
 
 
     def fb_prophet_function(data, future_years, seasonality_name, seasonality_val,seasonality_fourier, **params):
@@ -408,8 +226,6 @@ def Dolar_Blue():
         return prophet_model
 
 
-    # In[14]:
-
 
     def plot_valid(validation_set, size, model):
         pred = model.predict(validation_set)
@@ -417,10 +233,6 @@ def Dolar_Blue():
         temp['pred']=pred['yhat']
         temp.set_index('ds')[['y', 'pred']].plot()
         plt.tight_layout();
-
-
-    # In[15]:
-
 
     import time
 
@@ -430,32 +242,17 @@ def Dolar_Blue():
     ten_years = fb_prophet_function(data=training_set, future_years=10, seasonality_name='10_years', seasonality_val=365*10, seasonality_fourier=600,seasonality_mode='additive')
 
 
-    # In[16]:
-
 
     plot_valid(validation_set, 1000, ten_years)
-
-
-    # In[17]:
 
 
     pred = pred[['ds', 'yhat']]
 
 
-    # In[18]:
-
-
     validation_set = validation_set[['ds', 'y']]
 
 
-
-    # In[19]:
-
-
     pred = pred[pred['ds'].isin(validation_set['ds'])]
-
-
-    # In[20]:
 
 
     merged1 = pd.merge(pred, validation_set, on='ds', how='inner')
@@ -464,21 +261,15 @@ def Dolar_Blue():
     pred_ds_yhat = merged1[['ds', 'yhat']]
 
 
-    # In[21]:
-
 
     validation_ds_y['ds'] = validation_ds_y['ds'].apply(lambda x: x.timestamp())
     pred_ds_yhat['ds'] = pred_ds_yhat['ds'].apply(lambda x: x.timestamp())
 
 
-    # In[22]:
-
 
     validation_ds_y['ds'] = validation_ds_y['ds'].astype(float)
     pred_ds_yhat['ds'] = pred_ds_yhat['ds'].astype(float)
 
-
-    # In[23]:
 
 
     import math
@@ -494,13 +285,9 @@ def Dolar_Blue():
     print("Root Mean Squared Error: ", rmse1)
 
 
-    # In[24]:
-
 
     df = df[df['ds'] >= '2021-01-01']
 
-
-    # In[25]:
 
 
     training_set = df
@@ -509,13 +296,8 @@ def Dolar_Blue():
     five_years_model = fb_prophet_function(data=training_set, future_years=5, seasonality_name='5_years', seasonality_val=365*5, seasonality_fourier=500,seasonality_mode='additive')
 
 
-    # In[26]:
-
-
     plot_valid(validation_set, 1000, five_years_model)
 
-
-    # In[27]:
 
 
     from prophet.diagnostics import cross_validation, performance_metrics
@@ -526,8 +308,6 @@ def Dolar_Blue():
     df_cv = cross_validation(model, initial='360 days', period='180 days', horizon = '365 days')
     df_p = performance_metrics(df_cv, rolling_window=0.1) 
     
-
-    # In[28]:
 
 
     from sklearn.metrics import mean_squared_error
@@ -560,8 +340,6 @@ def Dolar_Blue():
     print("Root Mean Squared Error: ", rmse2)
 
 
-    # In[29]:
-
 
     from prophet import Prophet
 
@@ -570,13 +348,8 @@ def Dolar_Blue():
                             daily_seasonality=False)
 
 
-    # In[30]:
-
-
     five_years_model.add_seasonality(name='1_years', period=365*1, fourier_order=90)
 
-
-    # In[31]:
 
 
     import datetime
@@ -589,15 +362,10 @@ def Dolar_Blue():
     next_month = pd.DataFrame({"ds": date_range})
 
 
-    # In[32]:
-
 
     five_years_model.fit(training_set)
 
     prediction = five_years_model.predict(next_month)
-
-
-    # In[33]:
 
 
     values = prediction['yhat']
@@ -605,9 +373,6 @@ def Dolar_Blue():
     values_new = pd.DataFrame(values)
 
     values_new = values_new.rename(columns={'yhat':'Values'})
-
-
-    # In[34]:
 
 
     # import the datetime library
@@ -622,8 +387,6 @@ def Dolar_Blue():
 
     # set the index of the dataframe to the date range
     values_new.index = date_range
-
-    # In[35]:
 
 
     values_new.to_excel(r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newBlue.xlsx")
@@ -642,7 +405,7 @@ def Dolar_Blue():
         trace = go.Scatter(x=x[i-1:i+1], y=y[i-1:i+1], mode='lines', line=dict(color=color, width=1), showlegend=False)
         data.append(trace)
 
-    layout = go.Layout(title='Prediccion Dolar Blue', xaxis=dict(title='Fecha'), yaxis=dict(title='Valores'))
+    layout = go.Layout(xaxis=dict(title='Fecha'), yaxis=dict(title='Valores'))
     fig = go.Figure(data=data, layout=layout)
 
     st.write(fig)

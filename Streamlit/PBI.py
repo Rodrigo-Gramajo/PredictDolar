@@ -7,8 +7,8 @@ import plotly.express as px
 
 st.set_page_config(page_title="Predictor PBI")
 
-with st.sidebar.title("Predictor"):
-    with st.sidebar.title("Predictor"):
+with st.sidebar.title("Prediccion PBI per Capita"):
+    with st.sidebar.title("Prediccion PBI per Capita"):
             st.markdown('Realiza predicciones de PBI per Capita usando 6 variables que tienen mas del 80% de correacion :sunglasses:')
 
 header = st.container()
@@ -17,7 +17,7 @@ features = st.container()
 model_training = st.container()
 
 with header:
-    st.title("PBI per Capita Argentina Estimador")
+    st.title("Prediccion PBI per Capita")
 
 with features:
     st.markdown('6 Variables con mas correlacion al PBI per Capita*')
