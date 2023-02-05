@@ -4,6 +4,8 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
 from PIL import Image
+import streamlit.components.v1 as components
+import webbrowser
 
 
 st.set_page_config(page_title="EcoPredictor")
@@ -11,15 +13,23 @@ image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\Predict
 
 with st.sidebar.title("EcoPredictor"):
     with st.sidebar.title("EcoPredictor"):
-        st.markdown('Realiza predicciones de PBI per Capita usando 6 variables que tienen mas del 80% de correacion :sunglasses:')
+        st.markdown('Aplicacion diseñada con Machine Learning para predecir variables Macro & Micro economicas de Argentina con la posibilidad de analizar graficos Historicos 😎')
 
 
 st.image(image, caption=None, width=None, use_column_width='auto', clamp=False, channels="RGB", output_format="PNG")
 
 st.title("Bienvenidos a EcoPredictor")
-
 st.write("This is a demo of Streamlit's capabilities for building amazing data apps.")
 
-# Add a button
-if st.button("Explore the features"):
-    st.write("This button takes you to the features page.")
+flujo_image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\Flujo EcoPredict.drawio.png')
+
+st.title("Flujograma")
+st.image(flujo_image, caption=None, width=None, use_column_width='auto', clamp=False, channels="RGB", output_format="PNG")
+
+def download_file(url):
+    webbrowser.open(url)
+
+if st.button("Mostrar Flujograma"):
+    url = r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\svg\Flujo EcoPredict.drawio.svg"
+    download_file(url)
+

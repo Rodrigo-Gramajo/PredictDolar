@@ -10,7 +10,7 @@ st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Graficos Historicos"):
     with st.sidebar.title("Graficos Historicos"):
-            st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
+            st.markdown('Visualiza los datos historicos de las variables con mas importancia Macro & Micro economicas de Argentina 📊')
             with st.sidebar.container():
              image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
              st.image(image, use_column_width=True)
