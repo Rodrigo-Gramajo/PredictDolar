@@ -9,7 +9,7 @@ import webbrowser
 
 
 st.set_page_config(page_title="EcoPredictor")
-image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
+image = Image.open(r'data\Images\eco Predictor.png')
 
 with st.sidebar.title("EcoPredictor"):
     with st.sidebar.title("EcoPredictor"):
@@ -21,7 +21,7 @@ st.image(image, caption=None, width=None, use_column_width='auto', clamp=False, 
 st.title("Bienvenidos a EcoPredictor")
 st.write("This is a demo of Streamlit's capabilities for building amazing data apps.")
 
-flujo_image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\Flujo EcoPredict.drawio.png')
+flujo_image = Image.open(r'data\Images\Flujo EcoPredict.drawio.png')
 
 st.title("Flujograma")
 st.image(flujo_image, caption=None, width=None, use_column_width='auto', clamp=False, channels="RGB", output_format="PNG")
@@ -30,6 +30,6 @@ def download_file(url):
     webbrowser.open(url)
 
 if st.button("Mostrar Flujograma"):
-    url = r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\svg\Flujo EcoPredict.drawio.svg"
+    url = r"data\svg\Flujo EcoPredict.drawio.svg"
     download_file(url)
 
