@@ -6,9 +6,7 @@ import plotly.express as px
 import plotly.graph_objs as go
 import plotly.offline as pyo
 
-
-
-st.set_page_config(page_title="Prediccion Brecha entre Dolares")
+st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Brecha entre Dolares"):
     with st.sidebar.title("Prediccion Brecha entre Dolares"):
@@ -42,6 +40,9 @@ def Brecha():
 
     return fig
 
+fig = Brecha()
 
-if st.button("Predecir"):
-    Brecha()
+st.plotly_chart(fig)
+
+if st.button("Actualizar"):
+    fig = Brecha()

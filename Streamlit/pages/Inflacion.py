@@ -7,9 +7,7 @@ import plotly.graph_objs as go
 import plotly.offline as pyo
 import time
 
-
-
-st.set_page_config(page_title="Prediccion Inflacion")
+st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Inflacion"):
     with st.sidebar.title("Prediccion Inflacion"):
@@ -24,8 +22,44 @@ Inflacion = st.container()
 with header:
     st.title("Prediccion Inflacion")
 
-#trainingIF.ipynb
+#Inflacion Grafico 
 
+    import requests
+
+    TOKEN = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDU1Mjk2ODYsInR5cGUiOiJleHRlcm5hbCIsInVzZXIiOiJyb2RyaWdveWdyYW1ham9AZ21haWwuY29tIn0.igINIa9yg5n49tsbOYqA74REk8upmBaHRpDp1oXlyTTz_IB6VQpZIEQ5Z9SYcnq6AMYUrkSM9dL5YoUZpPca5g"
+    API_URL = "https://api.estadisticasbcra.com/inflacion_mensual_oficial"
+
+    # Agregar el token al header de autorización
+    headers = {"Authorization": "BEARER " + TOKEN}
+
+    # Realizar el request
+    response = requests.get(API_URL, headers=headers)
+
+    # Obtener el JSON de la respuesta
+    inflacion = response.json()
+
+    inflacion = pd.DataFrame(inflacion)
+
+    inflacion.to_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\inflacion.xlsx.pkl')
+
+    inflacion = inflacion[inflacion['d'] >= '2010-01-01']
+
+    import plotly.graph_objs as go
+    import plotly.offline as pyo
+
+    # create the trace
+    trace = go.Scatter(x=inflacion['d'], y=inflacion['v'], mode='lines', name='Inflacion Mensual %')
+
+    # create the layout
+    layout = go.Layout(title='Inflacion Mensual % Historica', xaxis=dict(title='Fecha'), yaxis=dict(title='Valor'))
+
+    # create the figure
+    fig = go.Figure(data=[trace], layout=layout)
+
+    # Show the chart
+    st.write(fig, width=800, height=400)
+
+#trainingIF.ipynb
 
 def Inflacion():
 

@@ -7,8 +7,7 @@ import plotly.graph_objs as go
 import plotly.offline as pyo
 import time
 
-
-st.set_page_config(page_title="Prediccion Dolar Oficial")
+st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Dolar Oficial"):
     with st.sidebar.title("Prediccion Dolar Oficial"):
@@ -22,6 +21,32 @@ Dolar_OF = st.container()
 
 with header:
     st.title("Prediccion Dolar Oficial")
+
+#Dolares 
+
+import plotly.express as px
+import pandas as pd
+
+# Read the data from the xlsx file
+df = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PreciosOF.xlsx', engine='openpyxl')
+
+# Create a plot with two lines, one for the 'Compra' column in blue and one for the 'Venta' column in red
+fig = px.line(df, x='Fecha', y='Compra')
+fig.add_scatter(x=df['Fecha'], y=df['Venta'], mode='lines', line=dict(color='red', width=2), showlegend=False)
+
+# Set the title of the plot
+fig.update_layout(title={
+        'text': "Dolar Oficial Compra & Venta Historico",
+        'font': {'size': 24},
+        'x': 0.5,
+        'xanchor': 'center',
+        'y': 0.95
+    },
+    xaxis_title="Fecha",
+    yaxis_title="Precio"
+)
+
+st.write(fig)
 
 #DolarApiOF.ipynb
 

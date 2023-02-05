@@ -4,8 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-
-st.set_page_config(page_title="Predictor PBI")
+st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion PBI per Capita"):
     with st.sidebar.title("Prediccion PBI per Capita"):

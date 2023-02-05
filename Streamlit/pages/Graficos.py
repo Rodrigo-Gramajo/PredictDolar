@@ -4,8 +4,7 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
 
-
-st.set_page_config(page_title="Graficos Historicos")
+st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Graficos Historicos"):
     with st.sidebar.title("Graficos Historicos"):
@@ -96,7 +95,6 @@ def Graficos():
     inflacion = pd.DataFrame(inflacion)
 
     inflacion.to_pickle(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\pkl\inflacion.xlsx.pkl')
-
 
     inflacion = inflacion[inflacion['d'] >= '2010-01-01']
 
@@ -206,5 +204,5 @@ def Graficos():
     # Show the chart
     st.write(fig, width=800, height=400)
 
-if st.button("Actualizar Graficos"):
-    Graficos()
+fig = Graficos()
+
