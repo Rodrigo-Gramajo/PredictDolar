@@ -415,7 +415,6 @@ def Dolar_Blue():
     # Display the last day of PreciosBlue.xlsx in col2
     col2.metric("Ahora", last_day_precios)
 
-
     # Display the first day of values_newBlue.xlsx in col3
     col3.metric("Mañana", first_day_values_new)
 
