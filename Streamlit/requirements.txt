@@ -5,4 +5,4 @@ prophet==1.1.1
 requests==2.27.1
 scikit_learn==1.2.1
 streamlit==1.17.0
-~atplotlib==3.5.1
+matplotlib==3.5.1
