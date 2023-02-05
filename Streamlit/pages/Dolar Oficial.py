@@ -332,7 +332,6 @@ def Dolar_OF():
     print("Root Mean Squared Error: ", rmse2)
 
 
-
     from prophet import Prophet
 
     five_years_model = Prophet(seasonality_mode='additive', seasonality_prior_scale=1, 
@@ -342,8 +341,6 @@ def Dolar_OF():
 
     five_years_model.add_seasonality(name='1_years', period=365*1, fourier_order=90)
 
-
-
     import datetime
 
     today = datetime.datetime.now()
@@ -352,8 +349,6 @@ def Dolar_OF():
     end_date = next_month.strftime("%Y-%m-%d")
     date_range = pd.date_range(start_date, end_date)
     next_month = pd.DataFrame({"ds": date_range})
-
-
 
     five_years_model.fit(training_set)
 
@@ -380,9 +375,35 @@ def Dolar_OF():
     # set the index of the dataframe to the date range
     values_new.index = date_range
 
-
     values_new.to_excel(r"C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newOf.xlsx")
 
+    import streamlit as st
+    import pandas as pd
+
+    # Read the data from the xlsx files
+    precios_blue = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\PreciosOF.xlsx')
+    values_new_blue = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newOF.xlsx')
+
+    # Get the penultimate day of PreciosBlue.xlsx
+    penultimate_day_precios = precios_blue['Venta'].iloc[1].astype(int)
+
+    # Get the last day of PreciosBlue.xlsx
+    last_day_precios = precios_blue['Venta'].iloc[-1].astype(int)
+
+    # Get the first day of values_newBlue.xlsx
+    first_day_values_new = values_new_blue['Values'].iloc[0].astype(int)
+
+    # Split the screen into three columns
+    col1, col2, col3 = st.columns(3)
+
+    # Display the penultimate day of PreciosBlue.xlsx in col1
+    col1.metric("Ayer", penultimate_day_precios)
+
+    # Display the last day of PreciosBlue.xlsx in col2
+    col2.metric("Ahora", last_day_precios)
+
+    # Display the first day of values_newBlue.xlsx in col3
+    col3.metric("Mañana", first_day_values_new)
     df = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newOf.xlsx')
     df = df.rename(columns={'Unnamed: 0': 'Fecha'})
     x = df['Fecha']
