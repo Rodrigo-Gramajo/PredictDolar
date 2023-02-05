@@ -3,12 +3,16 @@ import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
+from PIL import Image
 
 st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion PBI per Capita"):
     with st.sidebar.title("Prediccion PBI per Capita"):
             st.markdown('Realiza predicciones de PBI per Capita usando 6 variables que tienen mas del 80% de correacion :sunglasses:')
+            with st.sidebar.container():
+             image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
+             st.image(image, use_column_width=True)
 
 header = st.container()
 dataset = st.container()

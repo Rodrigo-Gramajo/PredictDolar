@@ -6,12 +6,17 @@ import plotly.express as px
 import plotly.graph_objs as go
 import plotly.offline as pyo
 import time
+from PIL import Image
+
 
 st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Inflacion"):
     with st.sidebar.title("Prediccion Inflacion"):
             st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
+            with st.sidebar.container():
+             image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
+             st.image(image, use_column_width=True)
 
 
 header = st.container()
