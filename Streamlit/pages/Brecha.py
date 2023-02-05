@@ -48,6 +48,7 @@ def Brecha():
 
     df["Fecha"] = pd.to_datetime(df["Fecha"])
 
+
     def plot_dolar_chart(df):
         # calculate the gap in percentage
         df["gap"] = ((df["Dolar Blue"] - df["Dolar Oficial"]) / df["Dolar Oficial"]) * 100

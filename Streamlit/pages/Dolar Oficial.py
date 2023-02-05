@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objs as go
 import plotly.offline as pyo
-
+import time
 
 
 st.set_page_config(page_title="Prediccion Dolar Oficial")
