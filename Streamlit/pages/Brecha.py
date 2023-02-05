@@ -13,7 +13,7 @@ with st.sidebar.title("Prediccion Brecha entre Dolares"):
     with st.sidebar.title("Prediccion Brecha entre Dolares"):
             st.markdown('Visualiza las prediciones de Dolar Oficial & Dolar Blue con su % de Brecha cambiaria 🤑')
             with st.sidebar.container():
-             image = Image.open(r'data\Images\eco Predictor.png')
+             image = Image.open('data\Images\eco Predictor.png')
              st.image(image, use_column_width=True)
 
 header = st.container()
