@@ -11,7 +11,8 @@ st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Dolar Blue"):
     with st.sidebar.title("Prediccion Dolar Blue"):
-        st.markdown('Visualiza las prediciones del Dolar Blue basado en sus valores desde el 2018 hasta hoy 💸')            with st.sidebar.container():
+        st.markdown('Visualiza las prediciones del Dolar Blue basado en sus valores desde el 2018 hasta hoy 💸')            
+        with st.sidebar.container():
               image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
               st.image(image, use_column_width=True)
 
