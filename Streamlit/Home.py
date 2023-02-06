@@ -4,10 +4,11 @@ from sklearn.ensemble import RandomForestRegressor
 import matplotlib.pyplot as plt
 import plotly.express as px
 from PIL import Image
+import webbrowser
 
 
 st.set_page_config(page_title="EcoPredictor")
-image = Image.open('data/Images/eco Predictor.png')
+image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
 
 with st.sidebar.title("EcoPredictor"):
     with st.sidebar.title("EcoPredictor"):

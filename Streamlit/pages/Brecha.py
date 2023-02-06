@@ -13,7 +13,7 @@ with st.sidebar.title("Prediccion Brecha entre Dolares"):
     with st.sidebar.title("Prediccion Brecha entre Dolares"):
             st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
             with st.sidebar.container():
-             image = Image.open('data\Images\eco Predictor.png')
+             image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
              st.image(image, use_column_width=True)
 
 header = st.container()
@@ -28,8 +28,8 @@ with header:
 
 def Brecha():
 
-    of = pd.read_excel(r'data\xlsx\values_newOf.xlsx')
-    bl = pd.read_excel(r'data\xlsx\values_newBlue.xlsx')
+    of = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newOf.xlsx')
+    bl = pd.read_excel(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\xlsx\values_newBlue.xlsx')
 
     merged_df = pd.merge(of, bl, on='Unnamed: 0')
 
