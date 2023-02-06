@@ -11,7 +11,7 @@ st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Brecha entre Dolares"):
     with st.sidebar.title("Prediccion Brecha entre Dolares"):
-            st.markdown('Visualiza las prediciones de Dolar Oficial & Dolar Blue con su % de Brecha cambiaria 🤑')
+            st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
             with st.sidebar.container():
              image = Image.open('data\Images\eco Predictor.png')
              st.image(image, use_column_width=True)
