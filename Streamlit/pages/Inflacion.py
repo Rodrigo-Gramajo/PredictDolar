@@ -13,8 +13,7 @@ st.set_page_config(page_title="EcoPredictor")
 
 with st.sidebar.title("Prediccion Inflacion"):
     with st.sidebar.title("Prediccion Inflacion"):
-            st.markdown('Visualiza los datos historicos de las 6 variables que tienen mas del 80% de correlacion :sunglasses:')
-            with st.sidebar.container():
+        st.markdown('Visualiza las prediciones de Inflacion basado en sus valores desde el 2018 hasta hoy 📈')            with st.sidebar.container():
              image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\PredictDolar\data\Images\eco Predictor.png')
              st.image(image, use_column_width=True)
 

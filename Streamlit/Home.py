@@ -12,8 +12,7 @@ image = Image.open(r'C:\Users\rodri\OneDrive\Escritorio\Digital\Dolar V4\Predict
 
 with st.sidebar.title("EcoPredictor"):
     with st.sidebar.title("EcoPredictor"):
-        st.markdown('Realiza predicciones de PBI per Capita usando 6 variables que tienen mas del 80% de correacion :sunglasses:')
-
+        st.markdown('Aplicacion diseñada con Machine Learning para predecir variables Macro & Micro economicas de Argentina con la posibilidad de analizar graficos Historicos 😎')
 
 st.image(image, caption=None, width=None, use_column_width='auto', clamp=False, channels="RGB", output_format="PNG")
 
