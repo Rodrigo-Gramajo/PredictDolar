@@ -124,7 +124,9 @@ Cápita, Expectativa de Vida, Consumo de recursos Fósiles per Cápita > Año
 ● Gráfico de Hitos Económicos > 2010
 ● Gráfico de Inflación Mensual > 2010
 ● Gráfico de Dólar Oficial & Dolar Blue > 2010
+
 ```
+
 **¿Cómo se recolectan los datos que alimentan al modelo?**
 
 Se trabajaron con 2 modelos predominantes:
@@ -209,33 +211,39 @@ tener un mejor entendimiento del proyecto:
     práctica.
 
 ```
-```
+
 ```
 # linear regression model
 Mean Absolute Error (train): 0.
 Mean Absolute Error (test): 1.20256795681 14722
 ```
+
 ```
 # SVM model
 mae_train: 0.
 mae_test: 0.
 ```
+
 ```
 # Gradient Boosting model
 mae_train: 1.
 mae_test: 0.
 ```
+
 ```
 # Random Forest model
 mae_train: 0.
 mae_test: 0.21032915921 19624
 ```
+
 ```
 Utilice los Hiperparametros :
 ```
+
 ```
 fit_intercept : True/False, para quedar o quitar laconstante de nuestro
 modelo.
+
 ```
 ```
 normalize : True/False, para normalizar los datos ono.
@@ -265,6 +273,7 @@ Vamos a trabajar con el modelo de 5 Años, y le bajamos el fourier order para
 tener una mejor estimación, le pedimos que nos genere un DS para los
 próximos 90 días del valor del Dólar y lo graficamos
 ```
+
 ```
 Entrenamiento con fbprophet*
 ```
@@ -292,11 +301,13 @@ generamos dos pruebas (10 años y 5 años) ambas
 ```
 con dos seasonality fourier (tendencia al cambio) diferentes:
 ```
+
 ```
 Vamos a trabajar con el modelo de 5 Años, y le bajamos el fourier order para
 tener una mejor estimación, le pedimos que nos genere un DS para los
 próximos 90 días del valor del dólar y lo graficamos.
 ```
+
 ```
 Entrenamiento con fbprophet*
 ```
@@ -327,9 +338,7 @@ Inflacion.xlsx.pkl
 
 ### Pipelines:
 
-```
-Inflación
-```
+_Inflación_
 
 _Dólares_
 
