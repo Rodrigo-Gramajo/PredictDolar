@@ -176,18 +176,21 @@ tener un mejor entendimiento del proyecto:
     valores del Dólar Blue y Dólar Oficial Precedidos para los próximos 90 días,
     Genera unas limpiezas del DF, calcula la brecha entre ambos valores todos
     los días y genera un gráfico para visualizarlo
+    
 **3. DolarApiBlue.ipynb** : Genera un request a la API
     "https://mercados.ambito.com//dolar/informal/historico-general/{start_date}/{cu
     rrent_date}", la cual devuelve las cotizaciones Históricas del Dólar Blue,
     Luego crea un DF del JSON, limpia y ordena los datos para generar un buen
     DF en formato de Base de Datos, exporta el DF en un archivo XLSX:
     Precio Blue.xlsx.
+    
 **4. DolarApiOF.ipynb** : Genera un request a la API
     "https://mercados.ambito.com//dolar/dolar-oficial/historico-general/{start_date}
     /{current_date}", la cual devuelve las cotizaciones Históricas del Dólar Oficial,
     Luego crea un DF del JSON, limpia y ordena los datos para generar un buen
     DF en formato de Base de Datos, Exporta el DF en un archivo XLSX:
     PreciosO.xlsx.
+    
 **5. EconomiaApi.ipynb** : Generamos 2 request a la API delBCRA
     https://api.estadisticasbcra.com, milestones, inflaciónmensual oficial, Luego
     creamos un DF del JSON para los Hitos y otro para a Inflación (Históricos),
@@ -195,6 +198,7 @@ tener un mejor entendimiento del proyecto:
     gráficos Históricos para estas métricas: Inflación Mensual Histórica, Dólar
     Blue Histórico, Dólar Oficial Histórico, Hitos Histórico (Esta API funciona con
     TOKEN de acceso*).
+    
 **6. Merged.ipynb** : Generamos nuestro propio DS desde 33archivos CSV
     diferentes, todos fueron obtenidos desde esta pagina:
     https://ourworldindata.org/, la cual nos brindó variasmétricas a nivel Global,
@@ -209,48 +213,39 @@ tener un mejor entendimiento del proyecto:
     per Cápita, Además generamos todos los arreglos previos a poder procesar
     el DF con sklearn, utilizamos un 20% para las pruebas y un 80% para la
     práctica.
-
 ```
-
 ```
 # linear regression model
 Mean Absolute Error (train): 0.
 Mean Absolute Error (test): 1.20256795681 14722
 ```
-
 ```
 # SVM model
 mae_train: 0.
 mae_test: 0.
 ```
-
 ```
 # Gradient Boosting model
 mae_train: 1.
 mae_test: 0.
 ```
-
 ```
 # Random Forest model
 mae_train: 0.
 mae_test: 0.21032915921 19624
 ```
-
 ```
 Utilice los Hiperparametros :
 ```
-
 ```
 fit_intercept : True/False, para quedar o quitar laconstante de nuestro
 modelo.
-
 ```
 ```
 normalize : True/False, para normalizar los datos ono.
 ```
 Generamos un decision tree model y con data de ejemplo validamos si el
 modelo puede predecir el PIB per Cápita.
-
 
 _Analisis de Correlacion entre las 33 variables del modelo*_
 
@@ -262,22 +257,20 @@ _Variables con más del 80% de correlación con el PBI per Cápita*_
     cotizaciones del momento del Dólar, luego crea un DF del JSON, y filtra para
     conocer las cotizaciones del Oficial, Actualiza los XLSX de los códigos:
     Dolor piOF.
+    
 **8. Training Blue.ipynb** : Leemos el archivo PKL generadopor visualisations
     Blue.ipynb, empezamos el proceso para poder procesarlo con fb prophet ,
     Importamos Prophet para poder empezar con nuestro modelo de análisis de
     tiempo y generamos dos pruebas (10 años y 5 años) ambas con dos
     seasonality fourier (tendencia al cambio) diferentes:
-
 ```
 Vamos a trabajar con el modelo de 5 Años, y le bajamos el fourier order para
 tener una mejor estimación, le pedimos que nos genere un DS para los
 próximos 90 días del valor del Dólar y lo graficamos
 ```
-
 ```
 Entrenamiento con fbprophet*
 ```
-
 **9. trainingIF.ipynb** : Leemos el archivo PKL generado porvisualisations.ipynb,
     empezamos el proceso para poder procesarlo con fb prophet ,Importamos
     Prophet para poder empezar con nuestro modelo de análisis de tiempo y
@@ -290,24 +283,20 @@ una mejor estimación, le pedimos que nos genere un DS para los próximos 12
 meses de la inflación.
 
 _Entrenamiento con fbprophet*_
-
 ```
 10.trainingOF.ipynb : Leemos el archivo PKL generadopor visualisations.ipynb,
 empezamos el proceso para poder procesarlo con fb prophet, importamos
 Prophet para poder empezar con nuestro modelo de análisis de tiempo y
 generamos dos pruebas (10 años y 5 años) ambas
 ```
-
 ```
 con dos seasonality fourier (tendencia al cambio) diferentes:
 ```
-
 ```
 Vamos a trabajar con el modelo de 5 Años, y le bajamos el fourier order para
 tener una mejor estimación, le pedimos que nos genere un DS para los
 próximos 90 días del valor del dólar y lo graficamos.
 ```
-
 ```
 Entrenamiento con fbprophet*
 ```
@@ -320,8 +309,6 @@ Precio Blue.xlsx.pkl
 
 12. **vizualtisationOF.ipynb** : Leemos el archivo XLSX generadopor
     BlueOFApi.ipynb, visualizamos los datos de DS para validar que podamos
-
-
 ```
 procesarlo y ver los datos Históricos, vemos los promedios de los valores en
 un gráfico, para descartar que haya valores extremos, también analizamos
